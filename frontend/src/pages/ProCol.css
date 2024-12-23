@@ -1,0 +1,148 @@
+/* General layout */
+.flex {
+  display: flex;
+  flex-direction: row;
+  background: linear-gradient(135deg, #d81159, #ee9ca7); /* Dark pink to light purple gradient */
+  height: auto;
+  color: white;
+  padding: 0;
+}
+
+/* Sidebar styling */
+.as {
+  background: linear-gradient(135deg, #ea3678, #ee9ca7) !important; /* Lighter pink gradient */
+  padding: 1rem;
+  color: white;
+  width: 250px; /* Adjusted width for better responsiveness */
+}
+
+.as h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-align: left;
+}
+
+.as input[type="radio"] {
+  margin-right: 8px;
+}
+
+.as label {
+  margin-right: 8px;
+  font-size: 0.9rem;
+  color: white;
+  display: block; /* Ensures categories are aligned */
+}
+
+.as input[type="radio"] {
+  margin-right: 5px;
+}
+
+.as input[type="range"] {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.as p {
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
+
+/* Main Content */
+.df {
+  padding: 2rem;
+  flex: 1;
+}
+
+.df h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.df select {
+  border: 1px solid #fff;
+  background: #d81159; /* Dark pink */
+  color: white;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+/* Product Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.grid .border {
+  background: white;
+  color: black;
+  border-radius: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+  height: 450px; /* Set a fixed height for uniformity */
+}
+
+.grid .border:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.grid img {
+  width: 100%;
+  height: 100%; /* Ensures the entire image fits inside the box */
+  object-fit: cover; /* Ensures the image doesn't stretch or squish */
+  display: block;
+}
+
+.grid h3 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.grid p {
+  font-size: 0.9rem;
+  margin: 5px 0;
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .flex {
+    flex-direction: column;
+  }
+
+  .df {
+    padding: 1rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr); /* Two columns on medium screens */
+  }
+
+  .as {
+    width: 100%; /* Full width sidebar on medium screens */
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    
+    grid-template-columns: 1fr !important; /* One column on smaller screens */
+  }
+
+  .grid .border {
+    height: 400px; /* Increased height for mobile */
+  }
+
+  .as {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .df {
+    padding: 1rem;
+  }
+}

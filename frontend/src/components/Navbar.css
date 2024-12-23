@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+/* Your styles */
+.gradient-text {
+  font-family: 'Dancing Script', cursive;
+  font-size: 4rem;
+  background-image: linear-gradient(135deg, #ff7a8b, #f8a0c1, #f0c0d0);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* General Navbar Styling */
+.navbar {
+  width: 100%;
+  background-color: #ffffff; /* White background */
+  border-bottom: 2px solid #ddd;
+  font-family: Arial, sans-serif;
+}
+
+/* Line 1 Styling */
+.navbar-line1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 5px 10px;
+  width: 300px;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  flex-grow: 1;
+}
+
+.search-bar button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.icons {
+  display: flex;
+  gap: 15px;
+}
+
+.icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Line 2 Styling */
+.navbar-line2 {
+  display: flex;
+  justify-content: center;
+  background-color: #f9f9f9; /* Slightly lighter background */
+  padding: 10px 20px;
+}
+
+.sections {
+  display: flex;
+  gap: 40px;
+}
+
+.sections span {
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.sections span:hover {
+  color: #800080; /* Plum color */
+}
+
+/* Styling for the Login button */
+.some-component button {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #ff007f, #d5006b); /* Dark pink gradient */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.some-component button:hover {
+  background: linear-gradient(135deg, #d5006b, #ff007f); /* Inverted gradient on hover */
+}
+
+/* Icon Styling */
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+.icon {
+  font-size: 24px;
+  cursor: pointer;
+  color: #333; /* Ensure icons are visible */
+}
+
+.icon-dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  z-index: 10;
+  min-width: 150px;
+}
+
+.dropdown-item {
+  padding: 10px 15px;
+  color: black;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f5f5f5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar-line1, .navbar-line2 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-bar {
+    width: 100%;
+  }
+
+  .sections {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .sections span {
+    font-size: 0.9rem;
+  }
+
+  .some-component {
+    margin-top: 10px; /* Spacing between login button and other elements */
+  }
+
+  .icons {
+    gap: 15px;
+  }
+}

@@ -1,0 +1,75 @@
+.testimonial-section {
+    margin-top: 40px;
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg, #ffb6c1, #ffd6e7); 
+    color: white;
+    text-align: center;
+  }
+  
+  .testimonial-heading {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .testimonial-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #333;
+    margin: 0 1rem;
+  }
+  
+  .testimonial-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid #ff66a9;
+  }
+  
+  .testimonial-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .testimonial-review {
+    font-style: italic;
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .slick-prev,
+  .slick-next {
+    color: #fff;
+    z-index: 1;
+  }
+  
+  .slick-dots li button:before {
+    color: white;
+  }
+  .slick-slide {
+    padding: 0 10px; /* Adds space between slides */
+  }
+  
+  .slick-list {
+    margin: 0 -10px; /* Cancels out padding for proper alignment */
+  }
+  
+  
+  @media (max-width: 768px) {
+    .testimonial-card {
+      padding: 1rem;
+    }
+  
+    .testimonial-photo {
+      width: 60px;
+      height: 60px;
+    }
+  }
+  

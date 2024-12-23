@@ -1,0 +1,58 @@
+/* PlaceOrder.css */
+
+.place-order-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  .order-form {
+    flex: 0.6;
+    background: linear-gradient(135deg, #ff7eb3, #ff758c);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .order-form label {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+  
+  .order-form input,
+  .order-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .order-summary {
+    flex: 0.4;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .order-summary h3,
+  .order-summary p {
+    color: white;
+  }
+  
+  .buy-button {
+    width: 100%;
+    padding: 12px;
+    background: #ff4c72;
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .buy-button:hover {
+    background: #e60050;
+  }
+  

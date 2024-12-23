@@ -1,0 +1,69 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+/* Navbar styles */
+.navbar {
+  width: 100%;
+  background: linear-gradient(135deg, #d81b60, #8e24aa); /* Dark pink to dark purple gradient */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 20px;
+  padding: 0 1rem;
+}
+
+.navbar-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  background-image: linear-gradient(135deg, #ff4081, #aa00ff); /* Lighter gradient for text */
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.logout-button {
+   
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(135deg, #8e24aa, #d81b60); /* Reverse gradient for button */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.logout-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar-title {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .logout-button {
+    font-size: 0.9rem;
+    padding: 0.4rem 1rem;
+  }
+
+  .navbar-container {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

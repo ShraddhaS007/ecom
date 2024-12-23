@@ -1,0 +1,96 @@
+/* General layout */
+.flex {
+    display: flex;
+    flex-direction: row;
+    background: linear-gradient(135deg, #b8003c, #d91159); /* Dark pink gradient */
+    height: auto;
+    color: white;
+  }
+  
+  /* Sidebar styling */
+  .as {
+    background: linear-gradient(135deg, #b8003c, #d91159); /* Match theme */
+    padding: 1rem;
+    color: white;
+  }
+  
+  .as h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+  
+  .as input[type="radio"] {
+    margin-right: 8px;
+  }
+  
+  .as label {
+    margin-right: 8px;
+    font-size: 0.9rem;
+    color: white;
+  }
+  
+  .as input[type="range"] {
+    width: 100%;
+    margin-top: 8px;
+  }
+  
+  .as p {
+    margin-top: 8px;
+    font-size: 0.9rem;
+  }
+  
+  /* Main Content */
+  .df {
+    padding: 2rem;
+  }
+  
+  .df h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+  
+  .df select {
+    border: 1px solid #fff;
+    background: #b8003c; /* Dark pink */
+    color: white;
+    border-radius: 4px;
+    padding: 5px;
+  }
+  
+  /* Product Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .grid .border {
+    background: white;
+    color: black;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .grid .border:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .grid img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .grid h3 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .grid p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+  }
+  

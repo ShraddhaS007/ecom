@@ -1,0 +1,63 @@
+/* App Container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* Content Container */
+.content-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 97px; /* Navbar height */
+}
+
+/* Sidebar Styling */
+.sidebar {
+  flex: 0 0 250px; /* Fixed width */
+  background: linear-gradient(135deg, #d81b60, #8e24aa); /* Matches Navbar theme */
+  height: calc(100vh - 97px); /* Full height minus navbar */
+  position: sticky;
+  top: 97px; /* Ensure it stays below the navbar */
+  z-index: 10;
+}
+
+/* Page Content */
+.page-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto; /* Handles scrolling for page content */
+}
+
+/* Navbar Styling */
+.navbar {
+  height: 97px; /* Fixed height */
+  background: linear-gradient(135deg, #d81b60, #8e24aa); /* Dark pink and purple */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  /* .content-container {
+    flex-direction: column;
+  } */
+
+  .sidebar {
+    flex: 0 0 70px;
+    height: auto;
+  }
+
+  .page-content {
+    margin-top: 20px; /* Adjust for sidebar on mobile */
+  }
+}

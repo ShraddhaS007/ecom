@@ -1,0 +1,31 @@
+/* Orders.css */
+
+.orders-container {
+    padding: 20px;
+  }
+  
+  .order-card {
+    background: linear-gradient(135deg, #ff7eb3, #ff758c);
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .order-card h2,
+  .order-card p {
+    color: white;
+  }
+  
+  .track-order-button {
+    padding: 10px;
+    background: #ff4c72;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .track-order-button:hover {
+    background: #e60050;
+  }
+  

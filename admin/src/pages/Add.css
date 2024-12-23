@@ -1,0 +1,169 @@
+/* Form Container */
+form {
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+    background: linear-gradient(135deg, #ffe0e6, #f8a0c1);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Section Title */
+  form p {
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 20px; /* Increased heading size */
+    color: #5a5a5a;
+  }
+  
+  /* Inputs and Textarea */
+  form input[type="text"],
+  form input[type="number"],
+  form textarea,
+  form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s;
+  }
+  
+  form input[type="text"]:focus,
+  form input[type="number"]:focus,
+  form textarea:focus,
+  form select:focus {
+    border-color: #ff8ea1;
+    box-shadow: 0 0 5px rgba(255, 142, 161, 0.5);
+  }
+  
+  /* Image Upload Section */
+  form .image-upload-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap; /* Wrap on smaller screens */
+  }
+  
+  
+  form label img {
+    width: 120px; /* Fixed size for image box */
+    height: 120px;
+    border-radius: 8px;
+    object-fit: cover; /* Ensures the image fits the box */
+    border: 2px dashed #ff8ea1;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  form label img:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Description Box */
+  form textarea {
+    height: 150px; /* Larger description box */
+  }
+  
+  /* Category and Price in a Row */
+  .category-price-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .category-price-row div {
+    flex: 1;
+  }
+  
+  /* Sizes Section */
+  .flex.gap-3 div {
+    display: inline-block;
+  }
+  
+  .flex.gap-3 p {
+    padding: 5px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .flex.gap-3 p.bg-pink-400 {
+    background-color: #ff8ea1;
+    color: white;
+  }
+  
+  .flex.gap-3 p.bg-slate-200 {
+    background-color: #f1f1f1;
+    color: #5a5a5a;
+  }
+  
+  /* Checkbox Section */
+  form label {
+    margin-left: 10px;
+    font-weight: 500;
+    color: #5a5a5a;
+  }
+  
+  /* Button */
+  form .w-28 button {
+    width: 100%;
+    background: linear-gradient(135deg, #d81b60, #8e24aa);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  form .w-28 button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  }
+  .flex.gap-3.abc{
+    display: flex;
+  }
+  
+  /* Responsive Design */
+
+  @media (max-width: 768px) {
+    form {
+      padding: 15px;
+      gap: 20px;
+    }
+  
+    /* Images in a Row on Mobile */
+    form .image-upload-section {
+      justify-content: space-evenly;
+      gap: 10px;
+    }
+  
+    form label img {
+      width: 100px;
+      height: 100px;
+    }
+  
+    /* Category and Price Stack */
+    .category-price-row {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    form .w-28 button {
+      font-size: 14px;
+    }
+  }
+  
