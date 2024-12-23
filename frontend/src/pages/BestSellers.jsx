@@ -115,8 +115,8 @@ const NewArrivals = () => {
         <div className="grid grid-cols-3 gap-4">
           {filteredProducts.map((product) => (
             <Link
-              to={`/product/${product.id}`} // Dynamic route based on product ID
-              key={product.id}
+              to={`/product/${product._id}`} // Dynamic route based on product ID
+              key={product._id}
               style={{ textDecoration: 'none', color: 'inherit' }}
             >
               <div className="border p-4">
