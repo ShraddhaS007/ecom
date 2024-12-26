@@ -8,7 +8,7 @@ const RelatedProducts = ({ category, currentProductId }) => {
 
   // Filter products of the same category, excluding the current product
   const relatedProducts = products.filter(
-    (product) => product.category === category && product.id !== currentProductId
+    (product) => product.category === category && product._id !== currentProductId
   );
 
   if (relatedProducts.length === 0) {
@@ -21,8 +21,8 @@ const RelatedProducts = ({ category, currentProductId }) => {
       <div className="related-products-grid">
         {relatedProducts.map((product) => (
           <Link
-            to={`/product/${product.id}`}
-            key={product.id}
+            to={`/product/${product._id}`}
+            key={product._id}
             className="related-product-card"
           >
             <img

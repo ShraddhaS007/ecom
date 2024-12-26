@@ -1,6 +1,7 @@
 
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios"
+import { useNavigate } from 'react-router-dom';
 
 
 export const ShopContext = createContext();
@@ -10,6 +11,7 @@ const ShopContextProvider = (props) => {
   const [orders, setOrders] = useState([]);
   const [products,setProducts]=useState([]);
   const [token,setToken]=useState('');
+  const navigate =useNavigate();
   const currency = "$";
   const delivery_fee = 100;
   const backendUrl =import.meta.env.VITE_BACKEND_URL
@@ -52,6 +54,12 @@ const ShopContextProvider = (props) => {
     getProductsData();
   },[])
 
+  useEffect(()=>{
+    if(!token && localStorage.getItem('token')){
+      setToken(localStorage.getItem('token'))
+    }
+  },[])
+
   const value = {
     products,
     cart,
@@ -61,7 +69,8 @@ const ShopContextProvider = (props) => {
     addToCart,
     removeFromCart,
     addOrder,backendUrl,
-    setToken,token
+    setToken,token,
+    navigate
   };
 
   return (

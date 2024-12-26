@@ -1,18 +1,17 @@
 
 
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
-import { toast } from "react-toastify";  // Import toast
-import "react-toastify/dist/ReactToastify.css";  // Import Toast styles
+import { toast } from 'react-toastify';  // Import toast
 import "./Login.css"; // Styling for the login form
 
 // Initialize toast co
 const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
-  const { token, setToken, backendUrl } = useContext(ShopContext);
-  const navigate = useNavigate(); // Access backendUrl and setToken
+  const { token, setToken, backendUrl,navigate } = useContext(ShopContext);
+  // const navigate = useNavigate(); // Access backendUrl and setToken
 
   const [loginData, setLoginData] = useState({
     email: "",
@@ -48,11 +47,11 @@ const Login = () => {
     try {
       const response = await axios.post(`${backendUrl}/api/user/login`, loginData);
       if (response.data.success) {
-        // Save token and notify user
-        setToken(response.data.token); // Save token (or other details) in context
-        toast.success("Logged in successfully!"); // Show success toast
+        toast.success("Logged in successfully!");
+        setToken(response.data.token); 
+       localStorage.setItem('token',response.data.token);
         console.log("Logged in successfully", response.data);
-        navigate("/");
+        // navigate("/");
         // Redirect user or show a success message
       } else {
         toast.error(response.data.message); // Show error toast
@@ -72,9 +71,11 @@ const Login = () => {
       const response = await axios.post(`${backendUrl}/api/user/register`, signUpData);
       if (response.data.success) {
         toast.success("Signed up successfully! You can now log in."); // Show success toast
+        setToken(response.data.token); 
+        localStorage.setItem('token',response.data.token);
         console.log("Signed up successfully", response.data);
-        navigate("/");
-        setIsSignUp(false); // Switch to login form after successful sign-up
+        // navigate("/");
+        // setIsSignUp(false); // Switch to login form after successful sign-up
       } else {
         toast.error(response.data.message); // Show error toast
         console.error("Signup failed:", response.data.message);
@@ -84,6 +85,12 @@ const Login = () => {
       console.error("Signup error:", error.message);
     }
   };
+
+  useEffect(()=>{
+        if(token){
+          navigate('/');
+        }
+  },[token])
 
   return (
     <div className="login-container">
