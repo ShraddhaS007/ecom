@@ -68,7 +68,7 @@ const Traditional = () => {
             <div key={size}>
               <input
                 type="radio"
-                id={size}
+                _id={size}
                 name="size"
                 value={size}
                 onChange={() => handleFilterChange('size', size)}

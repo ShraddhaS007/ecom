@@ -18,14 +18,15 @@ import Top from './pages/Top'
 import Bottom from './pages/Bottom'
 import Lehe from './pages/Lehe'
 import Dress from './pages/Dress'
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 
 const App = () => {
   return (
     <div className='abcd'>
-    <ShopContextProvider> <Nabar/></ShopContextProvider>
+       <ShopContextProvider> <Nabar/>       </ShopContextProvider>
      
       <Routes>
           <Route path='/' element={<ShopContextProvider><Home/></ShopContextProvider>}/>
@@ -41,12 +42,15 @@ const App = () => {
           <Route path='/dress' element={<ShopContextProvider><Dress/></ShopContextProvider>}/>
           <Route path='/Orders' element={<ShopContextProvider><Orders/></ShopContextProvider>}/>
           <Route path='/Login' element={<ShopContextProvider><Login/></ShopContextProvider>}/>
-          <Route path='/product/:id' element={<ShopContextProvider><Product/></ShopContextProvider>}/>
+          <Route path='/product/:_id' element={<ShopContextProvider><Product/></ShopContextProvider>}/>
           <Route path='/PlaceOrder' element={<ShopContextProvider><PlaceOrder/></ShopContextProvider>}/>
           <Route path='/Cart' element={<ShopContextProvider><Cart/></ShopContextProvider>}/>
       </Routes>
       <Footer/>
+      <ToastContainer />
     </div>
+   
+
   )
 }
 

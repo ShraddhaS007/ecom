@@ -53,7 +53,7 @@ const NewArrivals = () => {
             <div key={category}>
               <input
                 type="radio"
-                id={category}
+                _id={category}
                 name="category"
                 value={category.toLowerCase()}
                 onChange={() => handleFilterChange('category', category.toLowerCase())}
@@ -84,7 +84,7 @@ const NewArrivals = () => {
             <div key={size}>
               <input
                 type="radio"
-                id={size}
+                _id={size}
                 name="size"
                 value={size}
                 onChange={() => handleFilterChange('size', size)}
