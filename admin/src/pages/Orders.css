@@ -1,0 +1,127 @@
+/* .admin-orders-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    background: linear-gradient(90deg, #d63384, #ff69b4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .order-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background: white;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .order-card h2 {
+    font-size: 1.2rem;
+    color: #d63384;
+  }
+  
+  .order-item {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .order-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .order-details {
+    flex-grow: 1;
+  }
+  
+  
+  
+  select:hover {
+    background: #fce4ec;
+  }
+   */
+
+   /* AdminOrders.css */
+.admin-orders-container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  font-size: 26px;
+  background: linear-gradient(45deg, #d63384, #8b1e5c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.order-card {
+  padding: 15px;
+  margin: 15px 0;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  background: #fff;
+  transition: 0.3s;
+}
+
+.order-card:hover {
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 10px 0;
+}
+
+.order-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.order-details p {
+  margin: 0;
+  font-size: 14px;
+}
+
+select {
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #d63384;
+  background: linear-gradient(45deg, #d63384, #8b1e5c);
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+/* select {
+  margin-top: 10px;
+  padding: 5px;
+  border: 1px solid #d63384;
+  border-radius: 5px;
+  cursor: pointer;
+} */
+
+select:hover {
+  background: linear-gradient(45deg, #8b1e5c, #d63384);
+}

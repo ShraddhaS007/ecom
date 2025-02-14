@@ -1,7 +1,8 @@
 .product-page {
   display: flex;
   padding: 2rem;
-  background: linear-gradient(135deg, #ff8ba7, #ffe3ee);
+  background: rgb(239, 239, 239);
+  /* background: linear-gradient(135deg, #ff8ba7, #ffe3ee); */
 }
 
 .image-slider {
@@ -23,7 +24,7 @@
   flex: 1;
   padding: 1rem;
   margin-right: 10%;
-  background: linear-gradient(135deg, #ffe3ee, #ff8ba7);
+  background: linear-gradient(135deg, #ffe3ee, #ffd7e1);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

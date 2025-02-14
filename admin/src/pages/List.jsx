@@ -95,11 +95,11 @@ const List = ({ token }) => {
     }
   };
 
-  const removeProduct = async (id) => {
+  const removeProduct = async (_id) => {
     try {
       const response = await axios.post(
         `${backendUrl}/api/product/remove`,
-        { id },
+        { _id },
         { headers: { token } }
       );
       if (response.data.success) {

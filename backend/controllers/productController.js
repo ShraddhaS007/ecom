@@ -50,17 +50,41 @@ const listProducts = async(req,res)=>{
    }
 
 }
-const removeProduct = async(req,res)=>{
+// const removeProduct = async(req,res)=>{
 
+//     try {
+//          await productModel.findByIdAndDelete(req.body._id)
+//          res.json({success:true,message:"Product Removed"})
+//     } catch (error) {
+//         console.log(error)
+//     res.json({success:false,message:error.message})
+//     }
+
+// }
+const removeProduct = async (req, res) => {
     try {
-         await productModel.findByIdAndDelete(req.body._id)
-         res.json({success:true,message:"Product Removed"})
-    } catch (error) {
-        console.log(error)
-    res.json({success:false,message:error.message})
-    }
+        const { _id } = req.body; 
 
-}
+        if (!_id) {
+            return res.json({ success: false, message: "Product ID is required" });
+        }
+
+        console.log("Product ID to delete:", _id); // Debugging
+
+        const deletedProduct = await productModel.findByIdAndDelete(_id);
+
+        if (!deletedProduct) {
+            return res.json({ success: false, message: "Product not found" });
+        }
+
+        res.json({ success: true, message: "Product Removed" });
+
+    } catch (error) {
+        console.error("Error deleting product:", error);
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+
 const singleProduct = async(req,res)=>{
     try {
          const {productId} =req.body
