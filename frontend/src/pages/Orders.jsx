@@ -55,7 +55,7 @@ const Orders = () => {
       <img src={item.image} alt={item.name} className="order-img" />
       <div className="order-details">
         <p>{item.name}</p>
-        <p>{item.quantity} x ₹{item.price}</p>
+        <p>{item.quantity} x ${item.price}</p>
       </div>
     </a>
   </li>

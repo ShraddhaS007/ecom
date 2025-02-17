@@ -54,7 +54,7 @@ const ProCol = () => {
         {/* Category Filter */}
         <div className="mb-4">
             <h3 className="font-semibold">Category</h3>
-            {['Dress', 'Lehe', 'Topwear', 'Bottomwear'].map(
+            {/* {['Dress', 'Lehe', 'Topwear', 'Bottomwear'].map(
                 (category) => (
                     <div key={category}>
                         <input
@@ -67,7 +67,24 @@ const ProCol = () => {
                         <label htmlFor={category}>{category}</label>
                     </div>
                 )
-            )}
+            )} */}
+            {[
+    { label: 'Dress', value: 'dress' },
+    { label: 'Lehengas', value: 'lehe' },
+    { label: 'Topwear', value: 'topwear' },
+    { label: 'Bottomwear', value: 'bottomwear' }
+].map((category) => (
+    <div key={category.value}>
+        <input
+            type="radio"
+            id={category.value}
+            name="category"
+            value={category.value}
+            onChange={() => handleFilterChange('category', category.value)}
+        />
+        <label htmlFor={category.value}>{category.label}</label>
+    </div>
+))}
         </div>
 
         {/* Price Range Filter */}
@@ -83,7 +100,7 @@ const ProCol = () => {
                     handleFilterChange('priceRange', [0, Number(e.target.value)])
                 }
             />
-            <p>Up to: ₹{filters.priceRange[1]}</p>
+            <p>Up to: ${filters.priceRange[1]}</p>
         </div>
 
         {/* Size Filter */}
@@ -135,7 +152,7 @@ const ProCol = () => {
                     className="w-full h-40 object-cover mb-2"
                 />
                 <h3 className="font-semibold">{product.name}</h3>
-                <p>₹{product.price}</p>
+                <p>${product.price}</p>
                 <p>Category: {product.category}</p>
             </div>
         </Link>

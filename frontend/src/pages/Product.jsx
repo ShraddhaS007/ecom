@@ -1,3 +1,6 @@
+
+
+
 // import React, { useContext, useState, useEffect } from "react";
 // import { useParams } from "react-router-dom";
 // import { ShopContext } from "../context/ShopContext";
@@ -7,6 +10,8 @@
 // import "./Product.css";
 // import { Link } from "react-router-dom";
 // import RelatedProducts from "../components/RelatedProducts";
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 // const ProductPage = () => {
 //   const { _id } = useParams(); // Get product id from URL
@@ -14,7 +19,6 @@
 //   const [selectedSize, setSelectedSize] = useState(null);
 //   const [product, setProduct] = useState(null);
 //   const [cartClicked, setCartClicked] = useState(false);
-
 
 //   // Fetch product based on id when it changes
 //   useEffect(() => {
@@ -40,15 +44,32 @@
 
 //   const handleAddToCart = () => {
 //     if (!selectedSize) {
-      
-//       alert("Please select a size before adding to cart.");
+//       toast.error("Please select a size before adding to cart.", {
+//         position: "top-right",
+//         autoClose: 2000,
+//         hideProgressBar: false,
+//         closeOnClick: true,
+//         pauseOnHover: true,
+//         draggable: true,
+//         // theme: "colored",
+//       });
 //       return;
 //     }
 
 //     addToCart(product, selectedSize);
 
-//     // Temporarily highlight the "Add to Cart" button
+//     // Show success toast
+//     toast.success(`${product.name} added to cart!`, {
+//       position: "top-right",
+//       autoClose: 2000,
+//       hideProgressBar: false,
+//       closeOnClick: true,
+//       pauseOnHover: true,
+//       draggable: true,
+//       // theme: "colored",
+//     });
 
+//     // Temporarily highlight the "Add to Cart" button
 //     setCartClicked(true);
 //     setTimeout(() => {
 //       setCartClicked(false);
@@ -57,6 +78,7 @@
 
 //   return (
 //     <div className="product-page-container">
+//       <ToastContainer />
 //       <div className="product-page">
 //         {/* Left Section: Image Slider */}
 //         <div className="image-slider">
@@ -84,7 +106,7 @@
 //         <div className="product-details">
 //           <h1 className="product-name">{product.name}</h1>
 //           <p className="product-description">{product.description}</p>
-//           <p className="product-price">Price: ₹{product.price}</p>
+//           <p className="product-price">Price: ${product.price}</p>
 
 //           {/* Sizes */}
 //           <div className="product-sizes">
@@ -92,9 +114,7 @@
 //             {product.sizes.map((size, index) => (
 //               <button
 //                 key={index}
-//                 className={`size-badge ${
-//                   selectedSize === size ? "selected" : ""
-//                 }`}
+//                 className={`size-badge ${selectedSize === size ? "selected" : ""}`}
 //                 onClick={() => setSelectedSize(size)}
 //               >
 //                 {size}
@@ -118,7 +138,7 @@
 //               Add to Cart
 //             </button>
 //             <Link to="/PlaceOrder">
-//             <button className="buy-now">Buy Now</button>
+//               <button className="buy-now">Buy Now</button>
 //             </Link>
 //           </div>
 //         </div>
@@ -132,6 +152,8 @@
 // export default ProductPage;
 
 
+
+
 import React, { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
@@ -139,12 +161,13 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Product.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import RelatedProducts from "../components/RelatedProducts";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const ProductPage = () => {
+  const navigate = useNavigate();
   const { _id } = useParams(); // Get product id from URL
   const { products, addToCart } = useContext(ShopContext);
   const [selectedSize, setSelectedSize] = useState(null);
@@ -207,6 +230,22 @@ const ProductPage = () => {
     }, 300);
   };
 
+  const handleBuyNow = () => {
+    if (!selectedSize) {
+      toast.error("Please select a size .", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        // theme: "colored",
+      });
+      return;
+    }
+    navigate("/PlaceOrder", { state: { product } });
+  };
+
   return (
     <div className="product-page-container">
       <ToastContainer />
@@ -237,7 +276,7 @@ const ProductPage = () => {
         <div className="product-details">
           <h1 className="product-name">{product.name}</h1>
           <p className="product-description">{product.description}</p>
-          <p className="product-price">Price: ₹{product.price}</p>
+          <p className="product-price">Price: ${product.price}</p>
 
           {/* Sizes */}
           <div className="product-sizes">
@@ -268,9 +307,15 @@ const ProductPage = () => {
             >
               Add to Cart
             </button>
-            <Link to="/PlaceOrder">
+            {/* <Link to="/PlaceOrder">
               <button className="buy-now">Buy Now</button>
-            </Link>
+            </Link> */}
+            <button
+              className="buy-now"
+              onClick={handleBuyNow}
+            >
+              Buy Now
+            </button>
           </div>
         </div>
       </div>

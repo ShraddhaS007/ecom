@@ -1,6 +1,11 @@
 import userModel from "../models/userModel.js";
 import orderModel from "../models/orderModel.js";
-import productModel from "../models/productModel.js"
+import productModel from "../models/productModel.js";
+import Stripe from 'stripe'
+
+const currency="inr"
+const deliverycharge=100
+const stripe=new Stripe(process.env.STRIPE_SECRET_KEY)
 
 
 const placeOrder= async(req,res)=>{
@@ -42,8 +47,148 @@ const placeOrder= async(req,res)=>{
 
 }
 
-const placeOrderStripe= async(req,res)=>{
-    
+// const placeOrderStripe= async(req,res)=>{
+//     try {
+//       const { userId, items, amount, address, paymentMethod } = req.body;
+//       const {origin} =req.headers;
+//       if (!userId || !items || items.length === 0 || !amount || !address) {
+            
+//         return res.status(400).json({ success: false, message: "Invalid order details" });
+//       }
+//       const orderData = {
+//         userId,
+//         items,
+//         amount,
+//         address,
+//         paymentMethod:"Stripe",
+//         payment:false,
+//         date: Date.now(),
+        
+//       };
+//       const newOrder = new orderModel(orderData);
+//       await newOrder.save();
+      
+      
+//       const line_items = items.map((item) => ({
+//         price_data: {
+//           currency: String(currency),
+//           product_data: {
+//             name: item.name
+//           },
+        
+//           unit_amount: Math.round(Number(item.price || 0) * 100)
+
+//           // Ensure price is a number
+//         },
+//         quantity: Number(item.quantity) // Ensure quantity is a number
+//       }));
+      
+//       line_items.push({
+//         price_data: {
+//           currency: String(currency),
+//           product_data: {
+//             name: "Delivery Charges"
+//           },
+          
+//           unit_amount: Math.round(Number(deliverycharge || 0) * 100)
+//  // Ensure deliverycharge is a number
+//         },
+//         quantity: 1
+//       });
+//       console.log("Line Items for Stripe:", line_items);
+
+     
+//       const session =await stripe.checkout.sessions.create({
+//          success_url:`${origin}/verify?success=true&orderId=${newOrder._id}`,
+//          cancel_url:`${origin}/verify?success=false&orderId=${newOrder._id}`,
+//          line_items,
+//          mode:'payment',
+//       })
+//       res.json({success:true,session_url:session.url});
+//     } catch (error) {
+//       console.error("Order Placement Error:", error);
+//       res.status(500).json({ success: false, message: error.message });
+//     }
+// }
+const placeOrderStripe = async (req, res) => {
+  try {
+      const { userId, items, amount, address, paymentMethod } = req.body;
+      const { origin } = req.headers;
+
+      if (!userId || !items || items.length === 0 || !amount || !address) {
+          return res.status(400).json({ success: false, message: "Invalid order details" });
+      }
+
+      const orderData = {
+          userId,
+          items,
+          amount,
+          address,
+          paymentMethod: "Stripe",
+          payment: false,
+          date: Date.now(),
+      };
+
+      const newOrder = new orderModel(orderData);
+      await newOrder.save();
+
+      const line_items = items.map((item) => ({
+          price_data: {
+              currency: currency,  // Ensure currency is a valid string
+              product_data: {
+                  name: item.name  // Ensure name exists
+              },
+              unit_amount: Math.round(Number(item.price) * 100) // Convert to cents
+          },
+          quantity: Number(item.quantity) || 1  // Default to 1 if quantity is missing
+      }));
+
+      // Adding Delivery Charge
+      // const deliveryCharge = 500; // Example: 5 USD
+      line_items.push({
+          price_data: {
+              currency: currency,
+              product_data: {
+                  name: "Delivery Charges"
+              },
+              unit_amount: deliverycharge
+          },
+          quantity: 1
+      });
+
+      // Debugging: Log line_items
+      console.log("Line Items for Stripe:", JSON.stringify(line_items, null, 2));
+
+      const session = await stripe.checkout.sessions.create({
+          success_url: `${origin}/verify?success=true&orderId=${newOrder._id}`,
+          cancel_url: `${origin}/verify?success=false&orderId=${newOrder._id}`,
+          line_items,
+          mode: 'payment',
+      });
+
+      res.json({ success: true, session_url: session.url });
+  } catch (error) {
+      console.error("Order Placement Error:", error);
+      res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+
+const verifyStripe= async(req,res)=>{
+   const {orderId, success,userId}=req.body
+   try {
+      if(success==="true"){
+        await orderModel.findByIdAndUpdate(orderId,{payment:true});
+       // await userModel.findByIdAndUpdate(userId,{cartData:{}})
+        res.json({success:true});
+      }else{
+        await orderModel.findByIdAndDelete(orderId)
+        res.json({success:false})
+      }
+   } catch (error) {
+       console.log(error)
+       res.json({success:false,message:error.message})
+   }
 }
 
 const placeOrderRazorpay= async(req,res)=>{
@@ -138,4 +283,4 @@ const updateStatus = async (req, res) => {
 };
 
 
-export {placeOrder,placeOrderRazorpay,placeOrderStripe,allOrders,userOrders,updateStatus}
+export {placeOrder,placeOrderRazorpay,placeOrderStripe,allOrders,userOrders,updateStatus,verifyStripe}

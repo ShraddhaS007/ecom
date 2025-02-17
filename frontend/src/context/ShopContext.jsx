@@ -471,22 +471,7 @@ const ShopContextProvider = (props) => {
     }
   };
   
-  // const removeFromCart = async (itemId, size) => {
-  //   if (!userId) {
-  //     console.warn("No userId found; cannot remove item from cart");
-  //     return;
-  //   }
-
-  //   setCart((prevCart) =>
-  //     prevCart.filter((item) => !(item._id === itemId && item.size === size))
-  //   );
-
-  //   try {
-  //     await axios.post(`${backendUrl}/api/cart/remove`, { userId, itemId, size });
-  //   } catch (error) {
-  //     console.error("Error removing from cart:", error.message);
-  //   }
-  // };
+ 
 
   const getProductsData = async () => {
     try {

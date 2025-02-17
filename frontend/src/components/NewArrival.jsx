@@ -11,9 +11,9 @@ const NewArrival = () => {
     navigate(`/product/${id}`); // Navigate to product details page
   };
 
-  const toggleWishlist = (id) => {
-    setWishlist((prev) => ({ ...prev, [id]: !prev[id] }));
-  };
+  // const toggleWishlist = (id) => {
+  //   setWishlist((prev) => ({ ...prev, [id]: !prev[id] }));
+  // };
 
   return (
     <div style={styles.container}>
@@ -35,18 +35,7 @@ const NewArrival = () => {
                   onMouseOver={(e) => (e.currentTarget.src = product.image[1])}
                   onMouseOut={(e) => (e.currentTarget.src = product.image[0])}
                 />
-                {/* <button
-                  style={{
-                    ...styles.wishlistButton,
-                    color: wishlist[product.id] ? "red" : "grey",
-                  }}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    toggleWishlist(product.id);
-                  }}
-                >
-                  ❤️
-                </button> */}
+                
               </div>
               <h3 style={styles.productName}>{product.name}</h3>
               <p style={styles.productPrice}>${product.price}</p>

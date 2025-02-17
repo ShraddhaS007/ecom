@@ -58,7 +58,7 @@ const Bottom = () => {
               handleFilterChange('priceRange', [0, Number(e.target.value)])
             }
           />
-          <p>Up to: ₹{filters.priceRange[1]}</p>
+          <p>Up to: ${filters.priceRange[1]}</p>
         </div>
 
         {/* Size Filter */}
@@ -110,7 +110,7 @@ const Bottom = () => {
                   className="w-full h-40 object-cover mb-2"
                 />
                 <h3 className="font-semibold">{product.name}</h3>
-                <p>₹{product.price}</p>
+                <p>${product.price}</p>
                 <p>Category: {product.category}</p>
               </div>
             </Link>

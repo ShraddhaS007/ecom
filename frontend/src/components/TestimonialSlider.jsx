@@ -4,14 +4,14 @@ import "./TestimonialSlider.css";
 import { assets } from "../assets/assets";
 
 const testimonials = [
-  { name: "John Doe", photo: assets.dress, review: "Great experience and amazing service!" },
-  { name: "Jane Smith", photo: assets.dress, review: "Highly recommend! Quality products." },
-  { name: "Alice Brown", photo: assets.dress, review: "Prompt customer support, very satisfied." },
-  { name: "Robert Wilson", photo: assets.dress, review: "Affordable prices and fast delivery." },
-  { name: "Sophia Davis", photo: assets.dress, review: "Loved the user-friendly interface." },
-  { name: "Liam Miller", photo: assets.dress, review: "Great range of products to choose from." },
-  { name: "Emma Johnson", photo: assets.dress, review: "Quick and efficient shopping experience." },
-  { name: "James White", photo: assets.dress, review: "Customer service was outstanding!" },
+  { name: "John Doe", photo: assets.cust, review: "Great experience and amazing service!" },
+  { name: "Jane Smith", photo: assets.cust, review: "Highly recommend! Quality products." },
+  { name: "Alice Brown", photo: assets.cust, review: "Prompt customer support, very satisfied." },
+  { name: "Robert Wilson", photo: assets.cust, review: "Affordable prices and fast delivery." },
+  { name: "Sophia Davis", photo: assets.cust, review: "Loved the user-friendly interface." },
+  { name: "Liam Miller", photo: assets.cust, review: "Great range of products to choose from." },
+  { name: "Emma Johnson", photo: assets.cust, review: "Quick and efficient shopping experience." },
+  { name: "James White", photo: assets.cust, review: "Customer service was outstanding!" },
 ];
 
 const TestimonialSlider = () => {

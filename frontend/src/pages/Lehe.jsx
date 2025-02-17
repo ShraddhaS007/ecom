@@ -5,7 +5,7 @@ import { ShopContext } from '../context/ShopContext';
 import './ProCol.css';
 import { Link } from 'react-router-dom';
 
-const Lehe = () => {
+const Lehenga = () => {
   const { products } = useContext(ShopContext);
   const [filters, setFilters] = useState({
     priceRange: [0, 10000],
@@ -58,7 +58,7 @@ const Lehe = () => {
               handleFilterChange('priceRange', [0, Number(e.target.value)])
             }
           />
-          <p>Up to: ₹{filters.priceRange[1]}</p>
+          <p>Up to: ${filters.priceRange[1]}</p>
         </div>
 
         {/* Size Filter */}
@@ -110,7 +110,7 @@ const Lehe = () => {
                   className="w-full h-40 object-cover mb-2"
                 />
                 <h3 className="font-semibold">{product.name}</h3>
-                <p>₹{product.price}</p>
+                <p>${product.price}</p>
                 <p>Category: {product.category}</p>
               </div>
             </Link>
@@ -121,4 +121,4 @@ const Lehe = () => {
   );
 };
 
-export default Lehe;
+export default Lehenga;
