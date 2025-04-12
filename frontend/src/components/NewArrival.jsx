@@ -16,8 +16,15 @@ const NewArrival = () => {
   // };
 
   return (
+    <div style={styles.ab}>
+     <div style={styles.headingContainer}>
+        <h2 style={styles.heading}>New Arrivals</h2>
+      </div>
     <div style={styles.container}>
-      <h2 style={styles.heading}>New Arrivals</h2>
+      {/* <div style={styles.headingContainer}>
+        <h2 style={styles.heading}>New Arrivals</h2>
+      </div> */}
+     
       <div style={styles.cardContainer}>
         {products
           .filter((product) => product.newArrival) // Assuming you have `newArrival` flag
@@ -46,6 +53,7 @@ const NewArrival = () => {
         View More
       </button>
     </div>
+    </div>
   );
 };
 
@@ -53,17 +61,24 @@ const styles = {
   container: {
     marginTop:"30px",
     padding: "2rem",
-    background: "linear-gradient(135deg, #f7c6d7, #f1d0e8)", // Light pink gradient
+    background: "linear-gradient(135deg,rgb(249, 219, 229),rgb(238, 215, 232))", // Light pink gradient
     color: "black",
     textAlign: "center",
   },
+  headingContainer: {
+    background: "linear-gradient(135deg,rgb(254, 94, 174),rgb(254, 142, 254))", // Gradient for heading
+    padding: "1rem",
+    borderRadius: "8px",
+    marginBottom: "2rem",
+    
+  },
   heading: {
-    marginBottom: "1.5rem",
     fontSize: "3rem",
     fontWeight: "bold",
-    background: "linear-gradient(135deg,rgb(253, 65, 159),rgb(240, 197, 229)) ",
-    // WebkitBackgroundClip: "text",
+    fontFamily: "'Dancing Script', cursive",
+    margin: "0",
     color: "white",
+   
   },
   cardContainer: {
     display: "grid",
@@ -178,3 +193,4 @@ const styles = {
 };
 
 export default NewArrival;
+

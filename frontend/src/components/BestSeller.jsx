@@ -13,10 +13,6 @@ const Bestseller = () => {
     navigate(`/product/${id}`); // Navigate to product details page
   };
 
-  const toggleWishlist = (id) => {
-    setWishlist((prev) => ({ ...prev, [id]: !prev[id] }));
-  };
-
   return (
     <div style={styles.container}>
       <div style={styles.headingContainer}>
@@ -74,14 +70,17 @@ const styles = {
     textAlign: "center",
   },
   headingContainer: {
-    background: "linear-gradient(135deg, #ff007f, #ff00ff)", // Gradient for heading
+    background: "linear-gradient(135deg,rgb(255, 158, 207),rgb(249, 44, 249))", // Gradient for heading
     padding: "1rem",
     borderRadius: "8px",
     marginBottom: "2rem",
+    
   },
   heading: {
+    
     fontSize: "3rem",
     fontWeight: "bold",
+    fontFamily: "'Dancing Script', cursive",
     margin: "0",
     color: "white",
   },
@@ -92,13 +91,14 @@ const styles = {
     justifyContent: "center",
   },
   card: {
-    background: "linear-gradient(135deg, #ff007f, #ff00ff)", // Gradient for heading
+    background: "linear-gradient(135deg,rgb(254, 176, 215),rgb(252, 161, 252))", // Gradient for heading
     borderRadius: "10px",
     width: "100%",
     maxWidth: "300px",
     padding: "1rem",
     cursor: "pointer",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+   
     textAlign: "center",
     transition: "transform 0.3s ease, box-shadow 0.3s ease",
   },

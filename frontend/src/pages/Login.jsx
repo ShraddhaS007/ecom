@@ -1,184 +1,4 @@
 
-
-// import React, { useState, useContext, useEffect } from "react";
-// import axios from "axios";
-// // import { useNavigate } from "react-router-dom";
-// import { ShopContext } from "../context/ShopContext";
-// import { toast } from "react-toastify";  // Import toast
-// import "./Login.css"; // Styling for the login form
-
-
-// const Login = () => {
-//   const [isSignUp, setIsSignUp] = useState(false);
-//   const { token, setToken, backendUrl,navigate } = useContext(ShopContext);
-//   // const navigate = useNavigate(); // Access backendUrl and setToken
-
-//   const [loginData, setLoginData] = useState({
-//     email: "",
-//     password: "",
-//   });
-
-//   const [signUpData, setSignUpData] = useState({
-//     name: "",
-//     email: "",
-//     password: "",
-//   });
-
-//   // Handle login form changes
-//   const handleLoginChange = (e) => {
-//     setLoginData({
-//       ...loginData,
-//       [e.target.name]: e.target.value,
-//     });
-//   };
-
-//   // Handle sign-up form changes
-//   const handleSignUpChange = (e) => {
-//     setSignUpData({
-//       ...signUpData,
-//       [e.target.name]: e.target.value,
-//     });
-//   };
-
-
-//   const handleLoginSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//       const response = await axios.post(`${backendUrl}/api/user/login`, loginData);
-//       if (response.data.success) {
-//         toast.success("Logged in successfully!");
-//         setToken(response.data.token);
-//         localStorage.setItem("token", response.data.token);
-//         navigate("/");
-//       } else {
-//         toast.error(response.data.message);
-//       }
-//     } catch (error) {
-//       toast.error("Login failed! Please try again.");
-//     }
-//   };
-  
-
-//   // Handle sign-up submit
-//   const handleSignUpSubmit = async (e) => {
-//     e.preventDefault();
-
-//     try {
-//       const response = await axios.post(`${backendUrl}/api/user/register`, signUpData);
-//       if (response.data.success) {
-//         toast.success("Signed up successfully! You can now log in."); // Show success toast
-//         setToken(response.data.token); 
-//         localStorage.setItem('token',response.data.token);
-//         console.log("Signed up successfully", response.data);
-//         // navigate("/");
-//         // setIsSignUp(false); // Switch to login form after successful sign-up
-//       } else {
-//         toast.error(response.data.message); // Show error toast
-//         console.error("Signup failed:", response.data.message);
-//       }
-//     } catch (error) {
-//       toast.error("Signup failed! Please try again."); // Show error toast on exception
-//       console.error("Signup error:", error.message);
-//     }
-//   };
-
-//   useEffect(()=>{
-//         if(token){
-//           navigate('/');
-//         }
-//   },[token])
-
-//   return (
-//     <div className="login-container">
-//       <h2>{isSignUp ? "Sign Up" : "Login"}</h2>
-
-//       {isSignUp ? (
-//         <form onSubmit={handleSignUpSubmit}>
-//           <div className="form-group">
-//             <label>Name</label>
-//             <input
-//               type="text"
-//               name="name"
-//               value={signUpData.name}
-//               onChange={handleSignUpChange}
-//               placeholder="Enter your name"
-//               required
-//             />
-//           </div>
-//           <div className="form-group">
-//             <label>Email</label>
-//             <input
-//               type="email"
-//               name="email"
-//               value={signUpData.email}
-//               onChange={handleSignUpChange}
-//               placeholder="Enter your email"
-//               required
-//             />
-//           </div>
-//           <div className="form-group">
-//             <label>Password</label>
-//             <input
-//               type="password"
-//               name="password"
-//               value={signUpData.password}
-//               onChange={handleSignUpChange}
-//               placeholder="Enter your password"
-//               required
-//             />
-//           </div>
-//           <button type="submit" className="auth-btn">Sign Up</button>
-//           <p>
-//             Already have an account?{" "}
-//             <span className="toggle" onClick={() => setIsSignUp(false)}>
-//               Login here
-//             </span>
-//           </p>
-//         </form>
-//       ) : (
-//         <form onSubmit={handleLoginSubmit}>
-//           <div className="form-group">
-//             <label>Email</label>
-//             <input
-//               type="email"
-//               name="email"
-//               value={loginData.email}
-//               onChange={handleLoginChange}
-//               placeholder="Enter your email"
-//               required
-//             />
-//           </div>
-//           <div className="form-group">
-//             <label>Password</label>
-//             <input
-//               type="password"
-//               name="password"
-//               value={loginData.password}
-//               onChange={handleLoginChange}
-//               placeholder="Enter your password"
-//               required
-//             />
-//           </div>
-//           <button type="submit" className="auth-btn">Login</button>
-//           <p>
-//             <span className="toggle" onClick={() => navigate()}>
-//               Forgot Password?
-//             </span>
-//           </p>
-//           <p>
-//             Don't have an account?{" "}
-//             <span className="toggle" onClick={() => setIsSignUp(true)}>
-//               Sign Up
-//             </span>
-//           </p>
-//         </form>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Login;
-
 import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { ShopContext } from "../context/ShopContext";
@@ -205,10 +25,17 @@ const Login = () => {
   const handleSignUpChange = (e) => setSignUpData({ ...signUpData, [e.target.name]: e.target.value });
 
   // Login API Call
+  
+
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
+    console.log("Submitting login with:", loginData);
+    toast.info("Login form submitted");
+  
     try {
       const response = await axios.post(`${backendUrl}/api/user/login`, loginData);
+      console.log("Login response:", response);
+  
       if (response.data.success) {
         toast.success("Logged in successfully!");
         setToken(response.data.token);
@@ -217,10 +44,12 @@ const Login = () => {
       } else {
         toast.error(response.data.message);
       }
-    } catch {
+    } catch (err) {
+      console.error("Login failed:", err.response || err);
       toast.error("Login failed! Please try again.");
     }
   };
+  
 
   // Signup API Call
   const handleSignUpSubmit = async (e) => {
@@ -230,7 +59,8 @@ const Login = () => {
       if (response.data.success) {
         toast.success("Signed up successfully!");
         setToken(response.data.token);
-        localStorage.setItem("token", response.data.token);
+       //sessionStorage.setItem("token", response.data.token);
+         localStorage.setItem("token", response.data.token);
       } else {
         toast.error(response.data.message);
       }
@@ -272,10 +102,22 @@ const Login = () => {
     }
   };
 
+  // useEffect(() => {
+    
+  //    const storedToken = localStorage.getItem("token");
+  // if (storedToken) {
+  //   setToken(storedToken);
+  //   navigate("/");
+  // }
+  // }, [token]);
   useEffect(() => {
-    if (token) navigate("/");
-  }, [token]);
-
+    const storedToken = localStorage.getItem("token");
+    if (storedToken && !token) {
+      setToken(storedToken);
+      navigate("/");
+    }
+  }, []);
+  
   return (
     <div className="login-container">
       <h2>{isForgotPassword ? "Forgot Password" : isSignUp ? "Sign Up" : "Login"}</h2>
