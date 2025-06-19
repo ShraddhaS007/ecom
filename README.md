@@ -1,3 +1,6 @@
+
+
+
 Website Link:
 https://ecom-ff.vercel.app/
 
@@ -101,8 +104,50 @@ npm run dev
 
 📧 Email notifications for order confirmations and more
 
-📸 Screenshots
-![alt text](image-1.png)
+## 📸 Screenshots
+
+### 🏠 Home Page
+![Home](screenshots/home.png)
+
+### 🔐 Admin Login
+![Admin Login](screenshots/adminlogin.png)
+
+### ➕ Add Items
+![Add Items](screenshots/additems.png)
+
+### 📋 All Orders
+![All Orders](screenshots/allorders.png)
+
+### 🛒 Cart Page
+![Cart](screenshots/cart.png)
+
+### 📂 Category View
+![Category](screenshots/category.png)
+
+### 📄 Product List
+![List Items](screenshots/listitems.png)
+
+### 🔑 User Login
+![Login](screenshots/login.png)
+
+### 📦 Orders Page
+![Orders](screenshots/orders.png)
+
+### 📃 Product Details
+![Product Description](screenshots/productdes.png)
+
+### 🛍️ Products Grid
+![Products](screenshots/products.png)
+
+### 💳 Filtering/Sorting
+![Filter/Sort](screenshots/filtering_sorting.png)
+
+### 🔗 Related Products
+![Related Products](screenshots/related%20products.png)
+
+### 💳 Stripe Integration
+![Stripe](screenshots/stripe.png)
+
 
 🙋‍♀️ Author
 Shraddha Srivastava
