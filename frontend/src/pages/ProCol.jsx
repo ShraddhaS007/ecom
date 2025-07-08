@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import './ProCol.css';
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const ProCol = () => {
@@ -12,6 +13,12 @@ const ProCol = () => {
     });
     const [sortOption, setSortOption] = useState('');
 
+    //
+    const location = useLocation();
+const searchParams = new URLSearchParams(location.search);
+const query = searchParams.get("q")?.toLowerCase() || "";
+//
+
     const handleFilterChange = (key, value) => {
         setFilters((prev) => ({
             ...prev,
@@ -19,21 +26,41 @@ const ProCol = () => {
         }));
     };
 
-    const filteredProducts = products
-        .filter((product) => {
-            const { category, priceRange, size } = filters;
+    // const filteredProducts = products
+    //     .filter((product) => {
+    //         const { category, priceRange, size } = filters;
 
-            const matchesCategory = category ? product.category === category : true;
-            const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1];
-            const matchesSize = size ? product.sizes.includes(size) : true;
+    //         const matchesCategory = category ? product.category === category : true;
+    //         const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1];
+    //         const matchesSize = size ? product.sizes.includes(size) : true;
 
-            return matchesCategory && matchesPrice && matchesSize;
-        })
-        .sort((a, b) => {
-            if (sortOption === 'low-to-high') return a.price - b.price;
-            if (sortOption === 'high-to-low') return b.price - a.price;
-            return 0;
-        });
+    //         return matchesCategory && matchesPrice && matchesSize;
+    //     })
+    //     .sort((a, b) => {
+    //         if (sortOption === 'low-to-high') return a.price - b.price;
+    //         if (sortOption === 'high-to-low') return b.price - a.price;
+    //         return 0;
+    //     });
+  const filteredProducts = products
+  .filter((product) => {
+    const { category, priceRange, size } = filters;
+
+    const matchesCategory = category ? product.category === category : true;
+    const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1];
+    const matchesSize = size ? product.sizes.includes(size) : true;
+    const matchesQuery = query
+      ? product.name.toLowerCase().includes(query) ||
+        product.description?.toLowerCase().includes(query) ||
+        product.category?.toLowerCase().includes(query)
+      : true;
+
+    return matchesCategory && matchesPrice && matchesSize && matchesQuery;
+  })
+  .sort((a, b) => {
+    if (sortOption === 'low-to-high') return a.price - b.price;
+    if (sortOption === 'high-to-low') return b.price - a.price;
+    return 0;
+  });
 
     return (
         <div className="flex">

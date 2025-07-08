@@ -106,7 +106,7 @@ const Cart = () => {
         <p>Your cart is empty.</p>
       ) : (
         <div className="cart-items">
-          {cart.map((item, index) => (
+          {/* {cart.map((item, index) => (
             <div key={index} className="cart-item">
               <img
                 src={item.image || "/default-image.png"} // Replace with default if image is not provided
@@ -129,7 +129,31 @@ const Cart = () => {
                 
               </div>
             </div>
-          ))}
+          ))} */}
+          {cart.map((item, index) => (
+  <div key={index} className="cart-item">
+    <Link to={`/product/${item._id}`} className="cart-item-link">
+      <img
+        src={item.image || "/default-image.png"}
+        alt={item.name}
+        className="cart-item-image"
+      />
+      <div className="cart-item-details">
+        <h2 className="cart-item-name">{item.name}</h2>
+        <p>Size: {item.size}</p>
+        <p>Price: {currency}{item.price}</p>
+        <p>Quantity: {item.quantity}</p>
+      </div>
+    </Link>
+    <div className="cart-item-actions">
+      <FaTrashAlt
+        className="remove-icon"
+        onClick={() => handleRemoveFromCart(item)}
+      />
+    </div>
+  </div>
+))}
+
           <div className="cart-summary">
             <p>Subtotal: {currency}{calculateTotal()}</p>
             <p>Delivery Fee: {currency}{delivery_fee}</p>

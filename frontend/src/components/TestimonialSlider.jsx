@@ -8,7 +8,7 @@ const testimonials = [
   { name: "Jane Smith", photo: assets.cust, review: "Highly recommend! Quality products." },
   { name: "Alice Brown", photo: assets.cust, review: "Prompt customer support, very satisfied." },
   { name: "Robert Wilson", photo: assets.cust, review: "Affordable prices and fast delivery." },
-  { name: "Sophia Davis", photo: assets.cust, review: "Loved the user-friendly interface." },
+  { name: "Sophia Davis", photo: assets.cust, review: "Loved the interface. Very User friendly!" },
   { name: "Liam Miller", photo: assets.cust, review: "Great range of products to choose from." },
   { name: "Emma Johnson", photo: assets.cust, review: "Quick and efficient shopping experience." },
   { name: "James White", photo: assets.cust, review: "Customer service was outstanding!" },

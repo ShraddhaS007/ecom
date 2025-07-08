@@ -15,7 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 const ProductPage = () => {
   const navigate = useNavigate();
   const { _id } = useParams(); // Get product id from URL
-  const { products, addToCart } = useContext(ShopContext);
+  const {userId, products, addToCart } = useContext(ShopContext);
   const [selectedSize, setSelectedSize] = useState(null);
   const [product, setProduct] = useState(null);
   const [cartClicked, setCartClicked] = useState(false);
@@ -43,6 +43,10 @@ const ProductPage = () => {
   };
 
   const handleAddToCart = () => {
+     if (!userId) {
+      toast.error("Please login first to add this product to cart.");
+      return;
+    }
     if (!selectedSize) {
       toast.error("Please select a size before adding to cart.", {
         position: "top-right",
@@ -77,6 +81,10 @@ const ProductPage = () => {
   };
 
   const handleBuyNow = () => {
+     if (!userId) {
+      toast.error("Please login first to buy this product.");
+      return;
+    }
     if (!selectedSize) {
       toast.error("Please select a size .", {
         position: "top-right",
